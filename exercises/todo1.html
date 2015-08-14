@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+        .high {
+            color: red;
+        }
+        .medium {
+            color: orange;
+        }
+        .low {
+            color: green;
+        }
+        </style>
+    </head>
+    <body>
+        <ul id="todo"></ul>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            var TodoList = {
+              tasks: [],
+
+              addTask: function (task)
+              {
+                this.tasks.push(task);
+
+                var list = $('#todo');
+                var item = $('<li>' + task.description + '</li>');
+                item.addClass(task.priority);
+                list.append(item);
+              }
+            };
+
+            TodoList.addTask({ description: 'foo', priority: 'high', done: false });
+        </script>
+    </body>
+</html>
+
+

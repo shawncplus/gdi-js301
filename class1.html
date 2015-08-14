@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Class 1 ~ JavaScript for Beginners ~ Girl Develop It</title>
+
+        <meta name="description" content="This is an introduction to JavaScript curriculum, developed by Sylvia Richardson for the Raleigh/Durham chapter.
+
+        The course is meant to be taught in 4 two-hour sections. Each of the slides and practice files are customizable according to the needs of a given class or audience.">
+        <meta name="author" content="Girl Develop It">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <link rel="stylesheet" href="reveal/css/reveal.css">
+        <link rel="stylesheet" href="reveal/css/theme/gdidefault.css" id="theme">
+        <link rel="stylesheet" href="css/custom.css">
+
+        <!-- For syntax highlighting -->
+        <!-- dark editor--><link rel="stylesheet" href="reveal/lib/css/dark.css">
+
+        <!-- If use the PDF print sheet so students can print slides-->
+
+        <link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print">
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides" id="gdislides">
+                <!-- Opening slide -->
+                <section>
+                    <img src="images/gdi_logo_badge.png" alt="GDI logo">
+                    <h3>Intro to jQuery</h3>
+                    <h4>Class 1 & 2 - jQuery Basics</h4>
+                </section>
+
+                <section>
+                    <h3>Welcome!</h3>
+                    <div class = "left-align">
+                        <p>Girl Develop It is here to provide affordable and accessible programs to learn software through mentorship and hands-on instruction.</p>
+                        <p class ="green">Some "rules"</p>
+                        <ul>
+                            <li>We are here for you!</li>
+                            <li>Every question is important.</li>
+                            <li>Help each other.</li>
+                            <li>Have fun.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>Welcome!</h3>
+                    <div class = "left-align">
+                        <p class = "blue">Tell us about yourself.</p>
+                        <ul>
+                            <li>Who are you?</li>
+                            <li>What do you hope to get out of the class?</li>
+                            <li>What is your level of experience with JavaScript?</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>What we'll cover today</h3>
+                    <ul>
+                        <li>Review DOM and Data</li>
+                        <li>jQuery Basics</li>
+                        <li>jQuery: Reading, Creating &amp; Changing Elements</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Review: DOM and Data</h3>
+
+                    <p align="center">Our favorite Data Types</p>
+                    <pre><code class="javascript">
+var myString = "This is a string!";
+var myInteger = 1;
+var myBoolean = true;
+var myArray = ["string", 1, myInteger, true];
+var myObject = {
+    name: "Shawn",
+    age: 27,
+    favoriteBands: ["The Mountain Goats", "Fleet Foxes"]
+}
+
+</code></pre>
+                    <p align="center">
+                    Traversing the DOM with JavaScript
+                    </p>
+                    <pre><code class="javascript">
+document.getElementById('presentation');
+document.getElementsByClassName('slide');
+document.getElementsByTagName('body');
+document.querySelectorAll('a');
+document.querySelector('img');
+                    </code></pre>
+
+
+                </section>
+
+
+                <section>
+                    <h3>What's a library?</h3>
+
+                    <p>A collection of reusable methods for a particular purpose.</p>
+                    <p>A math library might have functions like:</p>
+                    <pre><code class="javascript">
+math.sum(array);
+math.pow(num, num);
+math.factorial(num);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>What's a library?</h3>
+
+                    <ul>
+                        <li>Include a script tag to the library on your page</li>
+                        <li>Call functions from that library</li>
+                    </ul>
+                    <pre><code>
+&lt;body&gt;
+
+&#60;script src="http://imagine-it.org/math.js"&#62;&#60;&#47;script&#62;
+&#60;script&#62;
+    var answer = math.sum(2, 2);
+    alert(answer);
+&#60;&#47;script&#62;
+&lt;/body&gt;
+                    </code></pre>
+                </section>
+                <!--/whats a library?-->
+
+                <section>
+                    <header><h3 class="center"><a href="exercises/videoplayer_library.html">Exercise Time!</a></h3>
+                </section>
+                <!--/exercise1-->
+
+                <section>
+                    <h3>jQuery: the most popular library</h3>
+
+                    <p>Write less code for common tasks.</p>
+                    <p>Abstract on top of cross-browser differences.</p>
+                    <a href="http://jquery.com/"><img src="images/jquery.png"></a>
+                    <p>Open source, big community</p>
+                </section>
+                <!--/why use libraries?-->
+
+
+                <section>
+                    <h3>jQuery: Why?</h3>
+
+                    <p>No library:</p>
+                    <pre><code class="javascript">
+var elems = document.getElementsByTagName("img");
+for (var i = 0; i &lt; elems.length; i++) {
+    elems[i].style.display = "none";
+}
+                    </code></pre>
+
+                    <p>jQuery:</p>
+                    <pre><code class="javascript">
+$('img').hide();
+
+</code></pre>
+
+                    <pre class="speaker-notes" style="display:none"><code>Shorter, cross-browser</code></pre>
+                </section>
+
+                <section>
+                    <h3>jQuery: Why?</h3>
+
+                    <p>No library:</p>
+                    <div class='header'></div>
+                    <pre><code class="javascript">
+var p = document.createElement('p');
+p.appendChild(document.createTextNode('Welcome!'));
+p.style.cssFloat = 'left';
+p.style.backgroundColor = 'red';
+p.className = 'special';
+document.querySelector('div.header').appendChild(p);
+
+</code></pre>
+
+                    <p>jQuery:</p>
+                    <pre><code class="javascript">
+var newP = $('&lt;p class="special"&gt;Welcome!&lt;/p&gt;');
+newP.css({ 'float': 'left', 'background-color': 'red' });
+$('div.header').append(newP);
+
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>jQuery: How?</h3>
+
+                    <p><a href="http://jquery.com/download/">Download</a> or link from an official CDN.</p>
+                    <p>Then include using a &#60;script&#62; tag on the page.</p>
+                    <pre><code>&lt;html&gt;
+&lt;body&gt;
+  &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <p>Download the demo document <a href="class1demo.html">here</a></p>
+                </section>
+
+                <section class="text-center">
+                    <h3>jQuery: The Basics</h3>
+
+                    <br>
+                    <table>
+                        <tr><td colspan="3">
+                            <pre><code class="javascript">$('p').addClass('special');</code></pre>
+                        </td></tr>
+                        <tr>
+                            <td><pre><code>$</code></pre></td>
+                            <td><pre><code>('p')</code></pre></td>
+                            <td><pre><code class="javascript">addClass('special')</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="grey-cell"><p>The global jQuery function. <br> Can also be "jQuery".</p></td>
+                            <td class="grey-cell"><p>Finds DOM element(s) according by CSS selector. <br> Returns a "collection"</p></td>
+                            <td class="grey-cell"><p>Built-in jQuery method that adds the specified class to the collection.
+                                <br><a href="http://api.jquery.com/addClass/" target="_blank">Read the docs here.</a>
+                                </p></td>
+                        </tr>
+                    </table>
+                    </table>
+                </section>
+
+                <section class="text-center">
+                    <h3>jQuery: The Basics</h3>
+                    <br>
+                    <pre><code>&lt;p&gt;Welcome to jQuery!&lt;/p&gt; </code></pre>
+                    <div>&#11015;</div>
+                    <pre><code class="javascript">$('p').addClass('special');</code></pre>
+                    <div>&#11015;</div>
+                    <pre><code class="xml">&lt;p class="special">Welcome to jQuery!&lt;/p&gt;</code></pre>
+                </section>
+
+                <section>
+                    <h3>jQuery: Finding Elements</h3>
+                    <br>
+                    <p style="text-align:center">All CSS selectors are valid, plus more. <a href="http://api.jquery.com/category/selectors/">Read the docs.</a></p>
+                    <br>
+                    <table style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>With this HTML..</th>
+                                <th>We find it this way:
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="code-cell"><pre><code>&lt;p&gt;Welcome!&lt;/p&gt;</code></pre></td>
+                            <td class="code-cell"><pre><code class="javascript">$('p')</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="code-cell"><pre><code>&lt;div id="main"&gt;Welcome!&lt;/div&gt;</code></pre></td>
+                            <td class="code-cell"><pre><code class="javascript">$('#main')</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="code-cell"><pre><code>&lt;p class="intro"&gt;Welcome!&lt;/p&gt;</code></pre></td>
+                            <td class="code-cell"><pre><code class="javascript">$('.intro')</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="code-cell"><pre><code>&lt;div id="main"&gt;
+    &lt;p class="intro"&gt;Welcome!&lt;/p&gt;
+&lt;/div&gt;</code></pre></td>
+                            <td class="code-cell"><pre><code class="javascript">$('#main .intro')</code></pre></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section class="text-left">
+                    <header><h3 style="text-align: center">Exercise</h3>
+                    <p>Update the demo page to have:</p>
+                    <ul style="width: 80%">
+                        <li>an unordered list (<code>ul</code>, <code>li</code>)</li>
+                        <li>a <code>div</code> with an id</li>
+                        <li>a span with a class</li>
+                    </ul>
+                    <p>Use jQuery to get the list of <code>li</code>'s, to find the div by id, and find the span by class</p>
+                </section>
+
+                <section class="text-center">
+                    <h3>jQuery: Reading Elements</h3>
+
+                    <p>If we start with this HTML...
+                    <pre><code style="text-align: left">&lt;a id="yahoo" href="http://www.yahoo.com" style="font-size:20px"&gt;
+    Yahoo!
+&lt;/a&gt;</code></pre></p>
+                    <p>We can find it...
+                    <pre><code class="javascript">$('#yahoo');</code></pre>
+                    </p>
+                    <p>We can store it...
+                        <pre><code class="javascript">var myLink = $('#yahoo');</code></pre>
+                    </p>
+                    <p>...And we can find out lots of things about it:</p>
+                    <table width="100%">
+                        <tr>
+                            <td class="code-cell"><pre><code class="javascript">myLink.html();</code></pre></td>
+                            <td>&#10145;</td>
+                            <td class="code-cell"><pre><code class="javascript">'Yahoo!'</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="code-cell"><pre><code class="javascript">myLink.attr('href');</code></pre></td>
+                            <td>&#10145;</td>
+                            <td class="code-cell"><pre><code class="javascript">'http://www.yahoo.com'</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="code-cell"><pre><code class="javascript">myLink.css('font-size');</code></pre></td>
+                            <td>&#10145;</td>
+                            <td class="code-cell"><pre><code class="javascript">'20px'</code></pre></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h3>jQuery: Changing Elements</h3>
+                    If we start with this HTML:
+                    <pre><code>&lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;</code></pre>
+                    We can use this jQuery:
+                    <pre><code class="javascript">$('a').html('Yahoo!');
+$('a').attr('href', 'http://www.yahoo.com');
+$('a').css({'color': 'purple'});</code></pre>
+                    And we'll get this:
+                    <pre><code>&lt;a href="http://www.yahoo.com" style="color:purple"&gt;Yahoo&lt;/a&gt;</code></pre>
+
+                </section>
+
+                <section class="text-left">
+                    <h3>jQuery Recipe: Create, Manipulate & Inject</h3>
+                    <br>
+                    <p>Step 1: Create element and store a reference</p>
+                    <pre><code class="javascript">var p = $('&lt;p&gt;')</code></pre>
+                    <p> Step 2: Use a method to manipulate (optional)</p>
+                    <pre><code class="javascript">p.addClass('special');</code></pre>
+                    <p> Step 3: Inject into your HTML </p>
+                    <pre><code class="javascript">$('body').append(p);</code></pre>
+
+                </section>
+
+
+                <section>
+                    <h3>jQuery: Create and Store</h3>
+                    <br>
+                    <p>Pass in any HTML string and jQuery will create it and return it as a collection.</p>
+                    <br>
+                    <table style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>With this jQuery...</th>
+                                <th></th>
+                                <th>We create this HTML:</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="code-cell"><pre><code class="javascript">$('&lt;p&gt;');</code></pre></td>
+                                <td>&#10145;</td>
+                                <td class="code-cell"><pre><code>&lt;p&gt;&lt;/p&gt;</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="code-cell"><pre><code class="javascript">$('&lt;p&gt;Welcome!&lt;/p&gt;');</code></pre></td>
+                                <td>&#10145;</td>
+                                <td class="code-cell"><pre><code>&lt;p&gt;Welcome!&lt;/p&gt;</code></pre></td>
+                        </tr>
+                        <tr>
+                            <td class="code-cell"><pre><code class="javascript">$('&lt;p class="intro"&gt;Welcome!&lt;/p&gt;');</code></pre></td>
+                                <td>&#10145;</td>
+                                <td class="code-cell"><pre><code>&lt;p class="intro"&gt;Welcome!&lt;/p&gt;</code></pre></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <p>Just like with the DOM API, we can store a reference to our new element in a variable...</p>
+                    <pre><code class="javascript">var myParagraph = $('&lt;p class="intro"&gt;Welcome!&lt;/p&gt;');</code></pre>
+                </section>
+
+                <section class="text-center">
+                    <h3>jQuery: Manipulate</h3>
+                    <p>Now that we've stored a reference, we can make further revisions to our element.</p>
+                    <pre><code class="javascript">var myParagraph = $('&lt;p class="intro"&gt;Welcome!&lt;/p&gt;');</code></pre>
+                    <pre><code>&lt;p class="intro"&gt;Welcome!&lt;p/&gt;</code></pre>
+                    <p>&#11015;</p>
+                    <pre><code class="javascript">myParagraph.css('font-size','4em');</code></pre>
+                    <pre><code>&lt;p class="intro" style="font-size: 4em"&gt;Welcome!&lt;/p&gt;</code></pre>
+                </section>
+
+                <section>
+                    <h3>jQuery: Inject</h3>
+                    <p>Now, we can take our stored reference to <code>myParagraph</code> and inject it somewhere!</p>
+                    <pre><code class="javascript">$('body').append(myParagraph);</code></pre>
+                    <pre><code>&lt;body&gt;
+    &lt;h3&gt;Some Header&lt;/h3&gt;
+    &lt;p class="intro" style="font-size: 4em"&gt;Welcome!&lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+                    <p>or</p>
+                    <pre><code class="javascript">$('body').prepend(myParagraph);</code></pre>
+                    <pre><code>&lt;body&gt;
+    &lt;p class="intro" style="font-size: 4em"&gt;Welcome!&lt;/p&gt;
+    &lt;h3&gt;Some Header&lt;/h3&gt;
+&lt;/body&gt;
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>regular DOM nodes to jQuery objects</h3>
+                    <pre><code class="javascript">var paragraphs = $('p'); // an array</code></pre>
+                    <br>
+                    <pre><code class="javascript">var myParagraph = paragraphs[0]; // a regular DOM node</code></pre>
+                    <br>
+                    <pre><code class="javascript">var $myParagraph = $(paragraphs[0]); // a jQuery Object</code></pre>
+                    <br>
+                    <p>We can also loop through our array...</p>
+                    <pre><code class="javascript">for(var i = 0; i &lt; paragraphs.length; i++) {
+    var element = paragraphs[i];
+    var paragraph = $(element);
+    paragraph.html(paragraph.html() + ' wowee!!!!');
+};</code></pre>
+
+                </section>
+
+                <section>
+                    <header><h3 class="center">Exercise Time!</h3></header>
+                    <p>Creating a Todo List</p>
+                    <pre><code class="html">&lt;ul id="tasks"&gt;&lt;/ul&gt;
+&lt;script&gt;
+var TodoList = {
+  tasks: [],
+
+  addTask: function (task)
+  {
+    this.tasks.push(task);
+  }
+};
+/*
+TodoList.addTask({ description: 'foobar', priority: 'high', done: false });
+*/
+&lt;/script&gt;
+</code></pre>
+                    <p>First update your demo html to have the above ul somewhere in the body and the script tag before the end of your <b>body</b> tag, after the jQuery include</p>
+                    <p>Update the addTask function to create an <code>li</code> tag containing the description. Give the li a class based on the priority</p>
+                </section>
+
+            </div><!-- Close .slides -->
+            <footer>
+                <div class="copyright">
+                    JavaScript 201 ~ Girl Develop It ~
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+                </div><!-- Close .copyright -->
+            </footer>
+        </div><!-- Close .reveal -->
+
+        <script src="reveal/lib/js/head.min.js"></script>
+        <script src="reveal/js/reveal.min.js"></script>
+        <script>
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                touch: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
