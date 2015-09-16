@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Class 2 ~ jQuery ~ Girl Develop It</title>
+
+        <meta name="description" content="Intro to jQuery">
+        <meta name="author" content="Girl Develop It">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <link rel="stylesheet" href="reveal/css/reveal.css">
+        <link rel="stylesheet" href="reveal/css/theme/gdidefault.css" id="theme">
+        <link rel="stylesheet" href="css/custom.css">
+
+        <!-- For syntax highlighting -->
+        <!-- dark editor--><link rel="stylesheet" href="reveal/lib/css/dark.css">
+
+        <!-- If use the PDF print sheet so students can print slides-->
+
+        <link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print">
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides" id="gdislides">
+                <section>
+                    <img src="images/gdi_logo_badge.png" alt="GDI logo">
+                    <h3>Intro to jQuery</h3>
+                    <h4>Class 2 - Events and their Callbacks</h4>
+                </section>  
+
+                <section>
+                    <h3>What we'll cover today</h3>
+                    <ul>
+                        <li>Events</li>
+                        <li>Effects and Animation</li>
+                        <li>jQuery Plugins</li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h3>Events</h3>
+                    <br>
+                    <pre><code class="javascript">
+//    event name &searrow;          &swarrow; callback
+$('button').on('click', function () {
+  console.log('clicked!');
+});
+
+</code></pre>
+                    <br>
+                    <p>
+                        <a href="http://api.jquery.com/category/events/keyboard-events/">Keyboard Events</a> 
+                        <ul class="unstyled">
+                            <li><code>'keydown'</code>, <code>'keypress'</code>, <code>'keyup'</code></li>
+                        </ul>
+                    </p>
+                    <p>
+                        <a href="http://api.jquery.com/category/events/mouse-events/">Mouse Events</a> 
+                        <ul class="unstyled">
+                            <li><code>'click'</code>, <code>'mousedown'</code>, <code>'mouseup'</code>, <code>'mousemove'</code></li>
+                        </ul>
+                    </p>
+
+                    <p class="text-center"><a href="http://jsfiddle.net/pcz497vq/" target="_blank">jsFiddle</a></p>
+                </section>
+                <!--/events1-->
+
+                <section>
+                    <h3>Event arguments and Defaults</h3>
+                    <br>
+                    <p>Arguments get applied in callbacks<p>
+                    <pre><code class="javascript">var myCallback = function (ee) {
+    console.log(e);
+};
+
+$('p').on('mouseenter', myCallback);</code></pre>
+                    <br>
+                    <p>Preventing Default Events</p>
+                    <pre><code class="javascript">$('a').on('click', function (event) {
+    event.preventDefault();
+    console.log('Not going there!');
+});</code></pre>
+                    <pre><code class="javascript">$('form').on('submit', function (event) {
+    event.preventDefault();
+    console.log('Not submitting, time to validate!');
+});</code></pre>
+
+                    <p class="text-center"><a href="http://jsfiddle.net/dhtwsodg/" target="_blank">jsFiddle</a></p>
+
+                </section>
+                <!--/events2-->
+                <section>
+                    <h3>Effects &amp; Animation</h3>
+
+                    <br>
+                    <pre><code class="javascript">
+$('#error1').fadeOut(2000);
+
+$('#error2').show(function (){
+    $(this).addClass('redText')
+});
+
+$('#error3').hide();
+
+</code></pre>
+
+                    <p class="text-center"><a href="http://jsfiddle.net/2omtme77/" target="_blank">jsFiddle</a></p>
+
+                </section>
+                <!--/effects and animation-->
+
+                <section>
+                    <h3>Exercise Time</h3>
+                    <p>Expanding on the TodoList app from the previous class <a href="http://jsfiddle.net/3o8zh1t7/" target="_blank">here</a> let's add an input for the task description and an add button. On click the add button should use the value from the input to create a new task object and call <code>addTask()</code></p>
+                    <p>There are some styles already set for the input/button</p>
+                </section>
+
+                <section>
+                    <h3>Solution</h3>
+                    <p><a href="http://jsfiddle.net/oy6sf3bq/" target="_blank">jsFiddle</a></p>
+                </section>
+                <!--/exercise3-->
+
+                <section>
+                    <h3>DOM Readiness</h3>
+                    <p>If you need to load a script in the <code>&lt;head&gt;</code>, wait for the rest of the DOM to be ready before executing
+                    <pre><code>
+&lt;body&gt;
+  ...
+  &lt;script&gt;
+    $(document).ready(function () {
+      // do something when the DOM is fully loaded
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+                    </code></pre>
+
+                    <pre><code class="javascript">
+$(function () {
+    // shorthand for $(document).ready();
+});
+
+</code></pre>
+                    </p>
+
+                </section>
+                <!--/DOM readiness-->
+
+                <section>
+                    <h3>jQuery</h3>
+
+                    <br>
+                    <h3 style="text-align:center">...is great.
+                        <br><br>
+                        But do not become a jQuery-dependant!</h3>
+                </section>
+
+                <section>
+                    <h3>jQuery Plugins</h3>
+
+                    <br>
+                    <p>"If you want to create an animation, effect, or UI component, chances are pretty good that someone has done the work for you already."</p>
+                    <br>
+                    <h3><a href="http://plugins.jquery.com">plugins.jquery.com</a></h3>
+                    <br><br>
+                    <p><a href="http://blog.pamelafox.org/2013/07/which-javascript-library-should-i-pick.html">Which plugin should you pick?</a></p>
+                    <pre class="speaker-notes" style="display:none">shorter, cross-browser</code></pre>
+                </section>
+                <!--/jquery plugins-->
+
+                <section>
+                    <h3>jQuery Plugin Usage</h3>
+                    <ul>
+                        <li>Download the plugin and associated files from the site or github repo.</li>
+                        <li>Copy them into your project folder.</li>
+                        <li>In the HTML, reference any associated CSS files.</li>
+                    </ul>
+                    <pre><code>&lt;link rel="type/stylesheet" type="text/css" href="tablesorter.css"&gt;</code></pre>
+                    <ul>
+                        <li>In the HTML, add a &lt;script&gt; tag for the jQuery plugin itself.</li>
+                    </ul>
+                    <pre><code>&lt;script src="lib/tablesorter.js"&gt;&lt;script&gt;</code></pre>
+                    <ul>
+                        <li>In the JavaScript, call the jQuery plugin on your DOM.</li>
+                    </ul>
+                    <pre><code class="javascript">$('table').tableSorter();</code></pre>       
+
+                    <p class="text-center"><a href="http://jsfiddle.net/Lb6bnoaz/1/" target="_blank">jsFiddle</a></p>
+
+                    <pre class="speaker-notes" style="display:none">shorter, cross-browser</code></pre>
+                </section>
+                <!--/jquery plugin usage-->
+
+                <section>
+                    <h3>jQuery</h3>
+
+                    <br>
+                    <h3 style="text-align:center">
+                        <a href="http://docs.jquery.com">docs.jquery.com</a>
+                    </h3>
+                </section>
+            </div><!-- Close .slides -->
+            <footer>
+                <div class="copyright">
+                JavaScript 301 ~ Girl Develop It ~
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+                </div><!-- Close .copyright -->
+            </footer>
+        </div><!-- Close .reveal -->
+
+        <script src="reveal/lib/js/head.min.js"></script>
+        <script src="reveal/js/reveal.min.js"></script>
+        <script>
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                touch: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+        </script>
+
+        <script type="text/javascript" src="//use.typekit.net/inx7vdr.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </body>
+</html>

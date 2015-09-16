@@ -1,14 +1,11 @@
 <!doctype html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
 
-        <title>Class 1 ~ JavaScript for Beginners ~ Girl Develop It</title>
+        <title>Class 1 ~ jQuery ~ Girl Develop It</title>
 
-        <meta name="description" content="This is an introduction to JavaScript curriculum, developed by Sylvia Richardson for the Raleigh/Durham chapter.
-
-        The course is meant to be taught in 4 two-hour sections. Each of the slides and practice files are customizable according to the needs of a given class or audience.">
+        <meta name="description" content="Intro to jQuery">
         <meta name="author" content="Girl Develop It">
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -184,14 +181,20 @@ p.className = 'special';
 document.querySelector('div.header').appendChild(p);
 
 </code></pre>
+                    <p class="text-center"><a href="http://jsfiddle.net/tcuvyp1L/" target="_blank">jsFiddle</a></p>
 
                     <p>jQuery:</p>
                     <pre><code class="javascript">
-var newP = $('&lt;p class="special"&gt;Welcome!&lt;/p&gt;');
-newP.css({ 'float': 'left', 'background-color': 'red' });
-$('div.header').append(newP);
+$('&lt;p class="special"&gt;Welcome!&lt;/p&gt;')
+    .css({
+        'float': 'left',
+        'background-color': 'red'
+    })
+    .appendTo($('div.header'))
+;
 
 </code></pre>
+                    <p class="text-center"><a href="https://jsfiddle.net/a50dwpt3/" target="_blank">jsFiddle</a></p>
                 </section>
 
                 <section>
@@ -201,10 +204,10 @@ $('div.header').append(newP);
                     <p>Then include using a &#60;script&#62; tag on the page.</p>
                     <pre><code>&lt;html&gt;
 &lt;body&gt;
-  &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;
+  &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                    <p>Download the demo document <a href="class1demo.html">here</a></p>
+                    <p>Example document can be seen <a href="class1demo.html">here</a> </p>
                 </section>
 
                 <section class="text-center">
@@ -272,11 +275,12 @@ $('div.header').append(newP);
                             <td class="code-cell"><pre><code class="javascript">$('#main .intro')</code></pre></td>
                         </tr>
                     </table>
+                    <p class="text-center"><a href="http://jsfiddle.net/1wgt8Ltr/" target="_blank">jsFiddle</a></p>
                 </section>
 
                 <section class="text-left">
                     <header><h3 style="text-align: center">Exercise</h3>
-                    <p>Update the demo page to have:</p>
+                    <p>Update the fiddle from the last slide to have:</p>
                     <ul style="width: 80%">
                         <li>an unordered list (<code>ul</code>, <code>li</code>)</li>
                         <li>a <code>div</code> with an id</li>
@@ -292,6 +296,8 @@ $('div.header').append(newP);
                     <pre><code style="text-align: left">&lt;a id="yahoo" href="http://www.yahoo.com" style="font-size:20px"&gt;
     Yahoo!
 &lt;/a&gt;</code></pre></p>
+                    <p class="thin text-center"><a id="yahoo" href="http://www.yahoo.com" style="font-size:20px">Yahoo!</a></p>
+
                     <p>We can find it...
                     <pre><code class="javascript">$('#yahoo');</code></pre>
                     </p>
@@ -325,14 +331,15 @@ $('div.header').append(newP);
                     We can use this jQuery:
                     <pre><code class="javascript">$('a').html('Yahoo!');
 $('a').attr('href', 'http://www.yahoo.com');
-$('a').css({'color': 'purple'});</code></pre>
+$('a').css({color: 'purple'});</code></pre>
                     And we'll get this:
                     <pre><code>&lt;a href="http://www.yahoo.com" style="color:purple"&gt;Yahoo&lt;/a&gt;</code></pre>
 
+                    <p class="text-center"><a href="http://jsfiddle.net/twkbpmj3/" target="_blank">jsFiddle</a></p>
                 </section>
 
                 <section class="text-left">
-                    <h3>jQuery Recipe: Create, Manipulate & Inject</h3>
+                    <h3>jQuery Recipe: Create, Manipulate &amp; Inject</h3>
                     <br>
                     <p>Step 1: Create element and store a reference</p>
                     <pre><code class="javascript">var p = $('&lt;p&gt;')</code></pre>
@@ -397,8 +404,8 @@ $('a').css({'color': 'purple'});</code></pre>
     &lt;p class="intro" style="font-size: 4em"&gt;Welcome!&lt;/p&gt;
 &lt;/body&gt;
 </code></pre>
-                    <p>or</p>
-                    <pre><code class="javascript">$('body').prepend(myParagraph);</code></pre>
+                    <p>or (same effect as above)</p>
+                    <pre><code class="javascript">myParagraph.appendTo($('body'));</code></pre>
                     <pre><code>&lt;body&gt;
     &lt;p class="intro" style="font-size: 4em"&gt;Welcome!&lt;/p&gt;
     &lt;h3&gt;Some Header&lt;/h3&gt;
@@ -420,35 +427,25 @@ $('a').css({'color': 'purple'});</code></pre>
     var paragraph = $(element);
     paragraph.html(paragraph.html() + ' wowee!!!!');
 };</code></pre>
+                    <p>or...</p>
+                    <pre><code class="javascript">paragraphs.each(function (i, element) {
+    var paragraph = $(element);
+    paragraph.html(paragraph.html() + ' wowee!!!!');
+});</code></pre>
 
                 </section>
 
                 <section>
                     <header><h3 class="center">Exercise Time!</h3></header>
                     <p>Creating a Todo List</p>
-                    <pre><code class="html">&lt;ul id="tasks"&gt;&lt;/ul&gt;
-&lt;script&gt;
-var TodoList = {
-  tasks: [],
-
-  addTask: function (task)
-  {
-    this.tasks.push(task);
-  }
-};
-/*
-TodoList.addTask({ description: 'foobar', priority: 'high', done: false });
-*/
-&lt;/script&gt;
-</code></pre>
-                    <p>First update your demo html to have the above ul somewhere in the body and the script tag before the end of your <b>body</b> tag, after the jQuery include</p>
+                    <p class="text-center"><a href="http://jsfiddle.net/fh5b18m1/1/" target="_blank">Starter code</a></p>
                     <p>Update the addTask function to create an <code>li</code> tag containing the description. Give the li a class based on the priority</p>
                 </section>
 
             </div><!-- Close .slides -->
             <footer>
                 <div class="copyright">
-                    JavaScript 201 ~ Girl Develop It ~
+                    JavaScript 301 ~ Girl Develop It ~
                     <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
                 </div><!-- Close .copyright -->
             </footer>
@@ -480,5 +477,8 @@ TodoList.addTask({ description: 'foobar', priority: 'high', done: false });
             });
         </script>
 
+        <script type="text/javascript" src="//use.typekit.net/inx7vdr.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     </body>
 </html>

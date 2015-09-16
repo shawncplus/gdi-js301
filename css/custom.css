@@ -66,3 +66,12 @@ table.smalltext{
     max-width: 1224px;
     margin-top: -450px;
 }
+
+p.thin {
+    margin-bottom: 0;
+    font-size: initial;
+}
+
+ul.unstyled {
+    list-style: none;
+}
