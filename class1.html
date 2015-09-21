@@ -36,7 +36,7 @@
                 <section>
                     <img src="images/gdi_logo_badge.png" alt="GDI logo">
                     <h3>Intro to jQuery</h3>
-                    <h4>Class 1 & 2 - jQuery Basics</h4>
+                    <h4>Class 1 - jQuery Basics</h4>
                 </section>
 
                 <section>
@@ -439,7 +439,15 @@ $('a').css({color: 'purple'});</code></pre>
                     <header><h3 class="center">Exercise Time!</h3></header>
                     <p>Creating a Todo List</p>
                     <p class="text-center"><a href="http://jsfiddle.net/fh5b18m1/1/" target="_blank">Starter code</a></p>
-                    <p>Update the addTask function to create an <code>li</code> tag containing the description. Give the li a class based on the priority</p>
+                    <ul>
+                        <li>Update the addTask function to create an <code>li</code> tag containing the description.</li>
+                        <li>Give the li a class based on the priority</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Solution</h3>
+                    <p class="text-center"><a href="http://jsfiddle.net/fh5b18m1/2/" target="_blank">jsFiddle</a></p>
                 </section>
 
             </div><!-- Close .slides -->
@@ -452,18 +460,15 @@ $('a').css({color: 'purple'});</code></pre>
         </div><!-- Close .reveal -->
 
         <script src="reveal/lib/js/head.min.js"></script>
-        <script src="reveal/js/reveal.min.js"></script>
+        <script src="reveal/js/reveal.js"></script>
         <script>
             // Full list of configuration options available here:
             // https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
-                controls: true,
+                controls: false,
                 progress: true,
                 history: true,
-                touch: true,
-
-                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-                transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+                mouseWheel: false,
 
                 // Optional libraries used to extend on reveal.js
                 dependencies: [
@@ -477,8 +482,8 @@ $('a').css({color: 'purple'});</code></pre>
             });
         </script>
 
-        <script type="text/javascript" src="//use.typekit.net/inx7vdr.js"></script>
-        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script src="https://use.typekit.net/yqo8wwc.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     </body>
 </html>
