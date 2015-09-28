@@ -1,0 +1,135 @@
+body {
+    font: 24px sans-serif;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+
+#container {
+    width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#todoDesc {
+    font-size: 24px;
+    font-family: sans-serif;
+    line-height: 1.4em;
+    outline: none;
+    box-sizing: border-box;
+    padding: 16px;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#todoAdd {
+    background-color: #4679BD;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 20px;
+    position: relative;
+    line-height: 1.4em;
+    top: -2px
+}
+
+#todoAdd:focus, #todoAdd:hover {
+    background-color: #629FF1;
+}
+
+#todoList {
+    text-align: justify;
+    list-style: none;
+    border-bottom: 1px solid #ededed;
+    padding: 0;
+}
+
+#todoList:empty {
+    text-align: center;
+}
+
+#todoList:empty:after {
+    color: #ccc;
+    content: "No items on your todo list";
+}
+
+#todoList li {
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+#todoList li:last-child {
+    border-bottom: none;
+}
+
+#todoList li.priority-high label {
+    color: red;
+}
+
+#todoList li.priority-medium label {
+    color: orange;
+}
+
+#todoList li.priority-low label {
+    color: green;
+}
+
+#todoList li label.description {
+    display: block;
+    margin-left: 50px;
+    padding: 5px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#todoList li.completed label.description {
+    text-decoration: line-through;
+}
+
+#todoList input.complete-check {
+    -webkit-appearance: none;
+    appearance: none;
+    bottom: 0;
+    height: 40px;
+    width: 40px;
+    margin: 0 auto;
+    position: absolute;
+    text-align: center;
+    top: 0;
+}
+
+#todoList input.complete-check:focus {
+    outline: none;
+}
+
+#todoList input.complete-check:after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-15 -15 100 100"><rect width="75" height="75" fill="none" stroke="#ccc" stroke-width="1" /></svg>');
+}
+
+#todoList li.completed input.complete-check:after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-15 -15 100 100"><rect width="75" height="75" fill="none" stroke="#3cd800" id="svg_3"/><path fill="#3cd800" d="m60,10l-30,46l-15,-15l-4,4l20,20l34,-52l-5,-3z" id="svg_2"/></svg>');
+}
+
+#todoList button.remove {
+    background-color: transparent;
+    border: none;
+    color: #f99;
+    font-size: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    margin: 0 auto;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 40px;
+}
+
+#todoList button.remove:hover {
+    color: #f00;
+}
