@@ -7,10 +7,21 @@
     </head>
     <body class="auth">
         <div id="container">
+
+            <div id="userDetails">
+                <span></span>
+                <img>
+            </div>
+
             <input type="text" id="todoDesc" autofocus placeholder="Task description">
             <button type="button" id="todoAdd">Add</button>
 
             <ul id="todoList"></ul>
+            <div class="list-controls">
+                <button id="filterAll" class="active">All</button>
+                <button id="filterOpen">Open</button>
+                <button id="filterCompleted">Completed</button>
+            </div>
         </div>
 
         <div id="login">Please log in</div>

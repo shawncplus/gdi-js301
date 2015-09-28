@@ -4,7 +4,15 @@ $(function () {
     var ENTER_KEY = 13;
 
     // Make the user log in
-    TodoList.auth();
+    TodoList.init({
+        container: $('#todoList'),
+        authCallback: function (authData) {
+            $('body').removeClass('auth');
+            var $details = $('#userDetails');
+            $details.find('img').attr('src', authData.google.profileImageURL);
+            $details.find('span').text(authData.google.displayName);
+        }
+    });
 
     $('#todoAdd').on('click', function () {
         var $descInput = $('#todoDesc');
@@ -29,30 +37,65 @@ $(function () {
             $('#todoAdd').trigger('click');
         }
     });
+
+    var filters = [
+        {
+            button: '#filterAll',
+            fn: function () {
+                return true;
+            }
+        },
+        {
+            button: '#filterOpen',
+            fn: function (todoItem) {
+                return !$(todoItem).hasClass('completed');
+            }
+        },
+        {
+            button: '#filterCompleted',
+            fn: function (todoItem) {
+                return $(todoItem).hasClass('completed');
+            }
+        }
+    ];
+
+    filters.forEach(function (filter) {
+        $(filter.button).on('click', function () {
+            $(this).parent().find('button').removeClass('active');
+            $(this).addClass('active');
+
+            TodoList.filter(filter.fn);
+        });
+    });
 });
 
 
 var TodoList = {
     firebase: new Firebase("https://boiling-heat-4673.firebaseio.com"),
 
-    auth: function () {
+    init: function (options) {
+        this.$todoList = options.container;
+        this.auth(options.authCallback || function () {});
+    },
+
+    auth: function (callback) {
         // login with google and get our todo list
         this.firebase.authWithOAuthPopup("google", function(error, authData) {
             if (error) {
                 console.log("Login Failed!", error);
             } else {
-                $('body').removeClass('auth');
                 this.todos = this.firebase.child('users/' + authData.uid);
+                callback(authData);
             }
 
-            this.init();
+            this.render();
         }.bind(this));
     },
 
-    init: function () {
+    render: function () {
         // Any time our todolist data changes pull down the new data and re-render the list
         this.todos.on("value", function (snapshot) {
-            $('#todoList').empty();
+            this.$todoList.empty();
             snapshot.forEach(function (todo) {
                 this._renderTask(todo.val(), todo);
             }.bind(this));
@@ -65,6 +108,12 @@ var TodoList = {
 
     remove: function (id) {
         this.todos.child(id).remove();
+    },
+
+    filter: function (filterFn) {
+        this.$todoList.find('li').each(function (i, todoItem) {
+            $(todoItem).toggle(filterFn(todoItem));
+        });
     },
 
     /**
@@ -86,7 +135,6 @@ var TodoList = {
      */
     _renderTask: function (todo, ref) {
         // create todo item and add to the DOM
-        var $todoList = $('#todoList');
         var $todo = $('<li>');
         $todo.data('id', ref.key());
         $todo.toggleClass('completed', todo.completed);
@@ -116,7 +164,7 @@ var TodoList = {
         $todo.append($deleteBtn);
 
         // finally add it to the list of todos
-        $todo.appendTo($todoList);
+        $todo.appendTo(this.$todoList);
     }
 };
 
