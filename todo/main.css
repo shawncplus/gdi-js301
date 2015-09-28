@@ -6,12 +6,22 @@ button:focus {
     outline: none;
 }
 
-
-
-#container {
+#container, #login {
     width: 600px;
     margin: 40px auto;
     text-align: center;
+}
+
+#login {
+    display: none;
+}
+
+body.auth #container {
+    display: none;
+}
+
+body.auth #login {
+    display: block;
 }
 
 #todoDesc {
@@ -90,6 +100,7 @@ button:focus {
 
 #todoList li.completed label.description {
     text-decoration: line-through;
+    color: #ccc;
 }
 
 #todoList input.complete-check {
